@@ -229,3 +229,45 @@ export async function getUser(email: string) {
     throw new Error('Failed to fetch user.');
   }
 }
+
+export async function getAllCustomersCount(): number {
+  try {
+    const result: number = await sql`select count(*) from customers`;
+    const customersCount = result.rows[0].count;
+
+    return customersCount;
+  } catch (error) {
+    console.error('Failed to get customers count:', error);
+    throw new Error('Failed to get customers count.');
+  }
+}
+
+export async function getAllInvoicesCount(): number {
+  try {
+    const result: number = await sql`select count(*) from invoices`;
+    const invoicesCount = result.rows[0].count;
+
+    return invoicesCount;
+  } catch (error) {
+    console.error('Failed to get invoices count:', error);
+    throw new Error('Failed to get invoices count.');
+  }
+}
+
+export async function getInvoicesCountByStatus(status: string): number {
+  try {
+    const result: number = await sql`
+        select sum(amount) 
+        from invoices
+        where status ILIKE ${`%${status}%`}
+    `;
+
+    const sum = result.rows[0].sum;
+
+    return formatCurrency(sum ?? '0');
+  } catch (error) {
+    console.error('Failed to get invoices amount sum by status:', error);
+    throw new Error('Failed to get invoices amount sum by status.');
+  }
+}
+
