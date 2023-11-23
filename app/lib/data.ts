@@ -250,7 +250,7 @@ export async function getUser(email: string) {
   }
 }
 
-export async function getAllCustomersCount(): number {
+export async function getAllCustomersCount(): Promise<number> {
   noStore();
 
   try {
@@ -264,7 +264,7 @@ export async function getAllCustomersCount(): number {
   }
 }
 
-export async function getAllInvoicesCount(): number {
+export async function getAllInvoicesCount(): Promise<number> {
   noStore();
 
   try {
@@ -278,7 +278,7 @@ export async function getAllInvoicesCount(): number {
   }
 }
 
-export async function getInvoicesCountByStatus(status: string): number {
+export async function getInvoicesCountByStatus(status: string): Promise<number> {
   noStore();
 
   try {
