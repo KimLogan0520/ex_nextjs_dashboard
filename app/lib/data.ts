@@ -254,7 +254,7 @@ export async function getAllCustomersCount(): Promise<number> {
   noStore();
 
   try {
-    const result: number = await sql`select count(*) from customers`;
+    const result = await sql`select count(*) from customers`;
     const customersCount = result.rows[0].count;
 
     return customersCount;
@@ -268,7 +268,7 @@ export async function getAllInvoicesCount(): Promise<number> {
   noStore();
 
   try {
-    const result: number = await sql`select count(*) from invoices`;
+    const result = await sql`select count(*) from invoices`;
     const invoicesCount = result.rows[0].count;
 
     return invoicesCount;
@@ -282,7 +282,7 @@ export async function getInvoicesCountByStatus(status: string): Promise<number> 
   noStore();
 
   try {
-    const result: number = await sql`
+    const result = await sql`
         select sum(amount) 
         from invoices
         where status ILIKE ${`%${status}%`}
