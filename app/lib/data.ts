@@ -278,7 +278,7 @@ export async function getAllInvoicesCount(): Promise<number> {
   }
 }
 
-export async function getInvoicesCountByStatus(status: string): Promise<number> {
+export async function getInvoicesCountByStatus(status: string): Promise<string> {
   noStore();
 
   try {
@@ -288,7 +288,7 @@ export async function getInvoicesCountByStatus(status: string): Promise<number> 
         where status ILIKE ${`%${status}%`}
     `;
 
-    const sum = result.rows[0].sum;
+    const sum = Number(result.rows[0].sum);
 
     return formatCurrency(sum ?? '0');
   } catch (error) {
