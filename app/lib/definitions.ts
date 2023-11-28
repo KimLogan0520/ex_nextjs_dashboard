@@ -17,13 +17,13 @@ export type Customer = {
 };
 
 export type Invoice = {
-  id: string;
+  id: string; // DB에 create시 자동으로 생성될 값
   customer_id: string;
-  amount: number;
-  date: string;
+  amount: number; // cents로 값을 관리해야함
   // In TypeScript, this is called a string union type.
   // It means that the "status" property can only be one of the two strings: 'pending' or 'paid'.
   status: 'pending' | 'paid';
+  date: string;
 };
 
 export type Revenue = {
