@@ -5,7 +5,12 @@ import { CreateInvoice } from '@/app/ui/invoices/buttons';
 import { lusitana } from '@/app/ui/fonts';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
-import {fetchInvoicesPages} from "@/app/lib/data";
+import { fetchInvoicesPages } from "@/app/lib/data";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Invoices',
+}
 
 /**
  * useSearchParams: 현재 URL의 매개변수에 접근할 수 있게 해줍니다. 예를 들어, URL '/dashboard/invoices?page=1&query=pending'의 경우 useSearchParams를 통해 {page: '1', query: 'pending'}과 같은 검색 매개변수를 얻을 수 있습니다.
